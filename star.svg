@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192">
+  <g stroke-linecap="round" stroke-linejoin="round" stroke-width="0">
+    <path fill="hsl(216deg 6% 90%)" d="m96,96l-24,-24l24,-72l0,96z" />
+    <path fill="hsl(216deg 6% 20%)" d="m96,0l24,72l-24,24l0,-96z" />
+
+    <path fill="hsl(216deg 6% 90%)" d="m192,96l-72,-24l-24,24l96,0z" />
+    <path fill="hsl(216deg 6% 20%)" d="m96,96l24,24l72,-24l-96,0z" />
+
+    <path fill="hsl(216deg 6% 90%)" d="m96,192l0,-96l24,24l-24,72z" />
+    <path fill="hsl(216deg 6% 20%)" d="m96,96l-24,24l24,72l0,-96z" />
+
+    <path fill="hsl(216deg 6% 90%)" d="m0,96l72,24l24,-24l-96,0z" />
+    <path fill="hsl(216deg 6% 20%)" d="m0,96l72,-24l24,24l-96,0z" />
+  </g>
+</svg>
