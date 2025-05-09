@@ -639,10 +639,10 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 Lionpoint Solutions. All rights reserved.</p>
+        <p>&copy; <span id="copyright-year">2025</span> Lionpoint Solutions. All rights reserved.</p>
     </footer>
 
-    <a href="#" class="floating-contact-button">Contact Us</a>
+    <a href="#" class="floating-contact-button" id="back-to-top-button">Contact Us</a>
 
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -651,17 +651,20 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    const offset = targetElement.offsetTop - 50;
+                    const offset = targetElement.offsetTop - 60; // Adjusted offset
                     window.scrollTo({
                         top: offset,
                         behavior: 'smooth'
                     });
                 }
             });
-});window.addEventListener('scroll', () => {
+        });
+
+        window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             const stickyHeader = document.querySelector('.sticky-header');
-            const floatingButton = document.querySelector('.floating-contact-button');const scrollY = window.scrollY;
+            const floatingButton = document.querySelector('.floating-contact-button');
+            const scrollY = window.scrollY;
 
             if (scrollY > header.offsetHeight) {
                 stickyHeader.classList.add('show');
@@ -691,6 +694,16 @@
             });
         }
 
+        // Update copyright year dynamically
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+        // Scroll to top on floating button click
+        document.getElementById('back-to-top-button').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
     </script>
 
