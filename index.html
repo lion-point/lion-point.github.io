@@ -462,12 +462,6 @@
             max-height: 500px;
             opacity: 1;
         }
-
-        .menu-icon.open + .sticky-nav {
-            display: flex;
-            max-height: 500px;
-            opacity: 1;
-        }
     </style>
 </head>
 <body>
@@ -600,7 +594,9 @@
         <p>&copy; 2025 Lionpoint Solutions. All rights reserved.</p>
     </footer>
 
-    <a href="#contact-section" class="floating-contact-button">Contact Us</a>
+    <a href="#contact-section" class="floating-contact-button">
+        <img src="TransparentLogo.png" alt="Lionpoint Solutions Logo" style="max-width: 100%; height: auto;">
+    </a>
 
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -633,7 +629,7 @@
         });
 
         menuIcon.addEventListener('mouseleave', () => {
-           // stickyNav.classList.remove('open');  Removed this line
+            stickyNav.classList.remove('open');
         });
 
         stickyNav.addEventListener('mouseenter', () => {
