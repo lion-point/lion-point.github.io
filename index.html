@@ -391,7 +391,7 @@
         .sticky-logo {
             max-width: 100px;
             height: auto;
-            margin-left: 0; /* Remove left margin */
+            margin: 0 auto; /* Center the logo horizontally */
         }
 
         .menu-icon {
@@ -466,9 +466,10 @@
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
         <div class="logo">
-            <img src="TransparentLogo.png" alt="Lionpoint Solutions Logo">
+            <a href="#"><img src="TransparentLogo.png" alt="Lionpoint Solutions Logo"></a>
         </div>
         <p class="tagline">Connecting ability with opportunity</p>
         <p class="summary">Empowering individuals with disabilities to achieve fulfilling careers through training, coaching, and ongoing support.</p>
@@ -483,7 +484,7 @@
     </header>
 
     <div class="sticky-header">
-        <img src="TransparentLogo.png" alt="Lionpoint Solutions Logo" class="sticky-logo">
+        <a href="#"><img src="TransparentLogo.png" alt="Lionpoint Solutions Logo" class="sticky-logo"></a>
     </div>
 
     <main id="main-content" class="services-section">
@@ -610,21 +611,25 @@
         const menuIcon = document.getElementById('menu-icon');
         const stickyNav = document.getElementById('sticky-nav');
 
-        menuIcon.addEventListener('mouseenter', () => {
-            stickyNav.classList.add('open');
-        });
+        if (menuIcon && stickyNav) {  // Check if elements exist
+            menuIcon.addEventListener('mouseenter', () => {
+                stickyNav.classList.add('open');
+            });
 
-        menuIcon.addEventListener('mouseleave', () => {
-            stickyNav.classList.remove('open');
-        });
+            menuIcon.addEventListener('mouseleave', () => {
+                stickyNav.classList.remove('open');
+            });
 
-        stickyNav.addEventListener('mouseenter', () => {
-            stickyNav.classList.add('open');
-        });
+            stickyNav.addEventListener('mouseenter', () => {
+                stickyNav.classList.add('open');
+            });
 
-        stickyNav.addEventListener('mouseleave', () => {
-            stickyNav.classList.remove('open');
-        });
+            stickyNav.addEventListener('mouseleave', () => {
+                stickyNav.classList.remove('open');
+            });
+        }
+
+
     </script>
 
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
