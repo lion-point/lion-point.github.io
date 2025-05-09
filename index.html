@@ -423,10 +423,16 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             border: 1px solid #eee;
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
         }
 
         .sticky-nav.open {
             display: flex;
+            max-height: 500px;
+            opacity: 1;
         }
 
         .sticky-nav-button {
@@ -448,6 +454,19 @@
 
         .sticky-nav-button:hover {
             background-color: #e0e0e0;
+        }
+
+        .menu-icon:hover + .sticky-nav,
+        .sticky-nav:hover {
+            display: flex;
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        .menu-icon.open + .sticky-nav {
+            display: flex;
+            max-height: 500px;
+            opacity: 1;
         }
     </style>
 </head>
@@ -609,8 +628,20 @@
         const menuIcon = document.getElementById('menu-icon');
         const stickyNav = document.getElementById('sticky-nav');
 
-        menuIcon.addEventListener('click', () => {
-            stickyNav.classList.toggle('open');
+        menuIcon.addEventListener('mouseenter', () => {
+            stickyNav.classList.add('open');
+        });
+
+        menuIcon.addEventListener('mouseleave', () => {
+           // stickyNav.classList.remove('open');  Removed this line
+        });
+
+        stickyNav.addEventListener('mouseenter', () => {
+            stickyNav.classList.add('open');
+        });
+
+        stickyNav.addEventListener('mouseleave', () => {
+            stickyNav.classList.remove('open');
         });
     </script>
 
