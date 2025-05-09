@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lionpoint Solutions</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <style>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
@@ -43,13 +44,13 @@
         .nav-button {
             background-color: #003366;
             color: #fff;
-            padding: 10px 20px; /* Slightly reduced padding */
-            margin: 5px 10px; /* Reduced margin */
+            padding: 10px 20px;
+            margin: 5px 10px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
-            font-size: 1em; /* Reduced font-size slightly */
+            font-size: 1em;
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
@@ -98,7 +99,7 @@
             text-align: left;
             display: inline-block;
         }
-         .service-list li{
+        .service-list li{
                margin-bottom: 10px;
                color: #444;
                text-align: left;
@@ -139,13 +140,13 @@
         .qualification-button {
             background-color: #003366;
             color: #fff;
-            padding: 10px 20px; /* Slightly reduced padding */
-            margin: 5px 10px; /* Reduced margin */
+            padding: 10px 20px;
+            margin: 5px 10px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
-            font-size: 1em; /* Reduced font-size slightly */
+            font-size: 1em;
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
@@ -295,9 +296,9 @@
         /* New Styles for Quadrant Layout */
         .quadrant-container {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two columns */
-            grid-template-rows: auto auto;    /* Two rows, auto height */
-            gap: 20px;                  /* Space between quadrants */
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 20px;
             padding: 20px;
             margin-bottom: 40px;
         }
@@ -308,7 +309,6 @@
             text-align: center;
             border: 1px solid #eee;
         }
-
         #preparation-training {
             grid-column: 1;
             grid-row: 1;
@@ -331,15 +331,99 @@
         .services-section{
             margin-bottom: 0;
         }
+
+        /* Floating Contact Button Styles */
+        .floating-contact-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #003366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .floating-contact-button:hover {
+            background-color: #002952;
+            transform: scale(1.1);
+        }
+
         @media (max-width: 768px) {
             .quadrant-container {
-                grid-template-columns: 1fr; /* Stack on small screens */
+                grid-template-columns: 1fr;
                 grid-template-rows: auto auto auto auto;
             }
             .quadrant {
                 grid-column: 1;
                 grid-row: auto;
             }
+             .floating-contact-button {
+                bottom: 10px;
+                right: 10px;
+                padding: 12px 20px;
+                font-size: 1em;
+            }
+        }
+
+        /* Sticky Header Styles */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f9f9f9;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            transition: transform 0.3s ease;
+            transform: translateY(-100%);
+            display: flex; /* Add this */
+            align-items: center; /* Vertically center the content */
+            justify-content: center; /* Add this */
+        }
+        .sticky-header.show {
+            transform: translateY(0);
+        }
+        .sticky-nav {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0;
+            flex-wrap: wrap;
+            margin-left: 50px; /* Add this */
+        }
+        .sticky-nav-button {
+            background-color: #003366;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 5px 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .sticky-nav-button:hover {
+            background-color: #002952;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+        .sticky-nav-button:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .sticky-logo {
+            max-width: 100px; /* Adjust size as needed */
+            height: auto;
+            margin-right: 10px; /* Add some spacing between logo and buttons */
+            display: inline-block; /* Ensure logo and buttons are on the same line */
         }
     </style>
 </head>
@@ -359,6 +443,18 @@
              <a href="#for-employers" class="nav-button">Employers</a>
         </nav>
     </header>
+
+    <div class="sticky-header">
+        <img src="headerlogo.png" alt="Header Logo" class="sticky-logo">
+        <nav class="sticky-nav">
+            <a href="#preparation-training" class="sticky-nav-button">Preparation & Training</a>
+            <a href="#coaching-support" class="sticky-nav-button">Coaching & Support</a>
+            <a href="#job-search-assistance" class="sticky-nav-button">Job Search Assistance</a>
+            <a href="#short-term-support" class="sticky-nav-button">Short Term Support</a>
+            <a href="#service-qualifications" class="sticky-nav-button qualification-button">Service Qualifications</a>
+             <a href="#for-employers" class="sticky-nav-button">Employers</a>
+        </nav>
+    </div>
 
     <main id="main-content" class="services-section">
         <h2 id="services">Services</h2>
@@ -439,10 +535,9 @@
             <p>Hiring individuals with disabilities also promotes diversity and inclusion, boosts company morale, and may qualify employers for the Work Opportunity Tax Credit. Lionpoint Solutions assists in training and provides ongoing support, ensuring a smooth integration of these employees into the workforce.</p>
             <p>Ultimately, this collaboration fosters a more inclusive and supportive community.</p>
         </section>
-
     </main>
 
-    <section class="contact-section">
+    <section id="contact-section">
         <h2>Contact Us</h2>
         <p>Contact us to learn more or schedule a consultation with our Employment Specialists. We look forward to assisting you!</p>
         <p>Phone: <a href="tel:208-996-0663">208-996-0663</a></p>
@@ -457,6 +552,8 @@
         <p>&copy; 2025 Lionpoint Solutions. All rights reserved.</p>
     </footer>
 
+    <a href="#contact-section" class="floating-contact-button">Contact Us</a>
+
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -467,8 +564,17 @@
             });
         });
 
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const stickyHeader = document.querySelector('.sticky-header');
+            const scrollY = window.scrollY;
 
-
+            if (scrollY > header.offsetHeight) {
+                stickyHeader.classList.add('show');
+            } else {
+                stickyHeader.classList.remove('show');
+            }
+        });
     </script>
 
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
