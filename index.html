@@ -13,6 +13,7 @@
             line-height: 1.7;
             color: #333;
             background-color: #fff;
+            text-align: center;
         }
         header {
             text-align: center;
@@ -66,6 +67,7 @@
         .services-section {
             padding: 20px;
             margin-bottom: 50px;
+            text-align: center;
         }
         .service-title {
             font-size: 2.2em;
@@ -75,6 +77,7 @@
             font-weight: bold;
             border-bottom: 2px solid #003366;
             padding-bottom: 15px;
+            text-align: center;
         }
         .subsection-title {
             font-size: 1.3em;
@@ -82,20 +85,25 @@
             margin-top: 25px;
             margin-bottom: 12px;
             color: #333;
+            text-align: center;
         }
         .service-description {
             margin-bottom: 20px;
             color: #444;
+            text-align: center;
         }
         .service-list {
             list-style-type: disc;
             padding-left: 30px;
             margin-bottom: 25px;
+            text-align: left;
+            display: inline-block;
         }
-        .service-list li {
-            margin-bottom: 10px;
-            color: #444;
-        }
+        .service-list li{
+               margin-bottom: 10px;
+               color: #444;
+               text-align: left;
+          }
         .contact-section {
             margin-top: 60px;
             border-top: 2px solid #003366;
@@ -193,6 +201,7 @@
             padding-top: 40px;
             padding-bottom: 20px;
             background-color: #f9f9f9;
+            text-align: center;
         }
         .employer-subsection-title{
             font-size: 1.3em;
@@ -200,6 +209,7 @@
             margin-top: 25px;
             margin-bottom: 12px;
             color: #003366;
+            text-align: center;
         }
 
         .social-media {
@@ -258,14 +268,38 @@
             color: #333;
             font-weight: bold;
         }
-
+        img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            .navigation {
+                flex-direction: column;
+            }
+            .nav-button {
+                margin: 10px;
+            }
+            .contact-form input, .contact-form textarea {
+                width: 95%;
+                max-width: 400px;
+            }
+            .service-list {
+                text-align: left;
+            }
+        }
     </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
         <div class="logo">
-            <img src="Final-01.jpg" alt="Lionpoint Solutions Logo">
+            <img src="TransparentLogo.png" alt="Lionpoint Solutions Logo">
         </div>
         <p class="tagline">Connecting ability with opportunity</p>
         <p class="summary">Empowering individuals with disabilities to achieve fulfilling careers through training, coaching, and ongoing support.</p>
@@ -275,7 +309,7 @@
             <a href="#job-search-assistance" class="nav-button">Job Search Assistance</a>
             <a href="#short-term-support" class="nav-button">Short Term Support</a>
             <a href="#service-qualifications" class="nav-button qualification-button">Service Qualifications</a>
-            <a href="#for-employers" class="nav-button">Employers</a>
+             <a href="#for-employers" class="nav-button">Employers</a>
         </nav>
     </header>
 
@@ -294,7 +328,7 @@
                 <li>Exploring diverse career paths</li>
             </ul>
             <p class="service-description">Our training builds job application confidence.</p>
-            <img src="training.jpg" alt="A group of people participating in a training session, learning job readiness skills." style="width: 100%; max-width: 400px; margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: block; margin-left: auto; margin-right: auto;">
+            <img src="training.jpg" alt="A group of people participating in a training session, learning job readiness skills.">
         </section>
 
         <section id="coaching-support" class="service">
@@ -309,7 +343,7 @@
                 <li>Maintain positive employer relations</li>
             </ul>
             <p class="service-description">Our coaching promotes job success.</p>
-            <img src="coaching.jpg" alt="A job coach working with an individual at their workplace, providing support and guidance." style="width: 100%; max-width: 400px; margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: block; margin-left: auto; margin-right: auto;">
+            <img src="coaching.jpg" alt="A job coach working with an individual at their workplace, providing support and guidance.">
         </section>
 
         <section id="job-search-assistance" class="service">
@@ -325,7 +359,7 @@
                 <li>Requesting workplace accommodations</li>
             </ul>
             <p class="service-description">We guide individuals through the job search to find fulfilling employment.</p>
-            <img src="jobsearch.jpg" alt="An Employment Specialist helping an individual search for job openings on a computer." style="width: 100%; max-width: 400px; margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: block; margin-left: auto; margin-right: auto;">
+            <img src="jobsearch.jpg" alt="An Employment Specialist helping an individual search for job openings on a computer.">
         </section>
 
         <section id="short-term-support" class="service">
@@ -340,7 +374,7 @@
                 <li>Requesting accommodations</li>
             </ul>
             <p class="service-description">This service offers brief support during the initial employment period.</p>
-            <img src="support.jpg" alt="A new employee receiving support and guidance from a Lionpoint Solutions staff member in a workplace setting." style="width: 100%; max-width: 400px; margin-top: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: block; margin-left: auto; margin-right: auto;">
+            <img src="support.jpg" alt="A new employee receiving support and guidance from a Lionpoint Solutions staff member in a workplace setting.">
         </section>
 
         <section id="service-qualifications">
@@ -355,13 +389,27 @@
                 <li>Functional/behavioral abilities to obtain/maintain employment</li>
             </ul>
         </section>
-        <section id="for-employers">
-            <h3 class="service-title">Employers</h3>
-            <p>Partnering with Lionpoint Solutions offers numerous advantages for employers. By hiring individuals with disabilities, businesses can enhance their profitability and cost-effectiveness. These employees often demonstrate higher retention rates, lower absenteeism, and increased work accuracy.</p>
-            <p>Hiring individuals with disabilities also promotes diversity and inclusion, boosts company morale, and may qualify employers for the Work Opportunity Tax Credit. Lionpoint Solutions assists in training and provides ongoing support, ensuring a smooth integration of these employees into the workforce. Ultimately, this collaboration fosters a more inclusive and supportive community.</p>
-            <blockquote style="margin-top: 20px; padding: 15px; border-left: 4px solid #003366; background-color: #f0f0f0; font-style: italic;">
-                "Lionpoint Solutions has been instrumental in helping us build a more diverse and inclusive workforce. Their support throughout the hiring and training process has been invaluable." - <span style="font-weight: bold;">John Smith, Hiring Manager</span>
-            </blockquote>
+        <section id="for-employers" class="employer-section">
+            <h3 class="service-title">Information for Local Businesses</h3>
+            <p>Partnering with Lionpoint Solutions offers businesses a unique opportunity to access a diverse pool of motivated and qualified candidates while making a positive impact in the community.  We provide support to both the job seeker and the employer throughout the entire employment process, ensuring a smooth and successful experience.</p>
+            <h4 class="employer-subsection-title">Why Partner with Us?</h4>
+            <ul class="service-list">
+                <li><span style="font-weight: bold;">Access to Qualified Candidates:</span> We connect you with individuals who possess the skills and determination to excel in various roles.</li>
+                <li><span style="font-weight: bold;">Increased Retention:</span> Employees with disabilities often demonstrate higher loyalty and lower turnover rates.</li>
+                <li><span style="font-weight: bold;">Enhanced Productivity:</span> Studies show that diverse teams, including individuals with disabilities, can lead to increased productivity and innovation.</li>
+                <li><span style="font-weight: bold;">Positive Impact:</span> Partnering with us demonstrates your commitment to diversity and inclusion, enhancing your company's reputation and community standing.</li>
+                 <li><span style="font-weight: bold;">Support and Training:</span> We provide ongoing support and training to both the employee and the employer, ensuring a successful and sustainable employment relationship.</li>
+                 <li><span style="font-weight: bold;">Financial Benefits:</span> Employers may be eligible for tax credits and other financial incentives for hiring individuals with disabilities.</li>
+            </ul>
+
+            <h4 class="employer-subsection-title">Our Services for Employers</h4>
+            <ul class="service-list">
+                <li><span style="font-weight: bold;">Job Matching:</span> We work closely with you to understand your specific needs and identify candidates whose skills and interests align with your job requirements.</li>
+                <li><span style="font-weight: bold;">Training and Support:</span> We provide training and support to both the employee and your team to ensure a smooth onboarding process and ongoing success.</li>
+                <li><span style="font-weight: bold;">Workplace Accommodations:</span> We can assist with identifying and implementing any necessary workplace accommodations.</li>
+                <li><span style="font-weight: bold;">Ongoing Support:</span> Our Employment Specialists provide continuous support to both the employer and the employee to address any challenges and ensure a positive employment experience.</li>
+            </ul>
+
         </section>
 
     </main>
@@ -371,23 +419,6 @@
         <p>Contact us to learn more or schedule a consultation with our Employment Specialists. We look forward to assisting you!</p>
         <p>Phone: <a href="tel:208-996-0663">208-996-0663</a></p>
         <p>Email: <a href="mailto:lionpointsolutions@gmail.com">lionpointsolutions@gmail.com</a></p>
-        <form class="contact-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Name" aria-label="Name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Email" aria-label="Email" required>
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="phone" placeholder="Phone Number" aria-label="Phone Number" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" placeholder="Message" aria-label="Message" required></textarea>
-            <div class="captcha-container">
-                [ CAPTCHA Placeholder ]
-            </div>
-            <button type="submit">Send Message</button>
-            <div id="confirmation-message" style="display: none; margin-top: 10px; color: green;">
-                Your message has been sent!
-            </div>
-        </form>
         <div class="social-media">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
             <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -408,59 +439,10 @@
             });
         });
 
-        document.querySelector('.contact-form').addEventListener('submit', function (e) {
-            e.preventDefault();
 
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const phoneInput = document.getElementById('phone');
-            const messageInput = document.getElementById('message');
-
-            if (!nameInput.value.trim()) {
-                alert('Please enter your name.');
-                nameInput.focus();
-                return;
-            }
-            if (!emailInput.value.trim() || !isValidEmail(emailInput.value.trim())) {
-                alert('Please enter a valid email address.');
-                emailInput.focus();
-                return;
-            }
-            if (!phoneInput.value.trim() || !isValidPhone(phoneInput.value.trim())) {
-                alert('Please enter a valid phone number.');
-                phoneInput.focus();
-                return;
-            }
-            if (!messageInput.value.trim()) {
-                alert('Please enter your message.');
-                messageInput.focus();
-                return;
-            }
-
-
-            setTimeout(function () {
-                document.getElementById('confirmation-message').style.display = 'block';
-                document.querySelector('.contact-form').reset();
-                setTimeout(function () {
-                    document.getElementById('confirmation-message').style.display = 'none';
-                }, 3000);
-            }, 1000);
-        });
-
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email);
-        }
-
-        function isValidPhone(phone) {
-            const phoneRegex = /^\d{10}$/;
-            return phoneRegex.test(phone.replace(/[-()_\s]/g, ''));
-        }
 
     </script>
 
     <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
 </body>
 </html>
-
-
