@@ -75,9 +75,13 @@
             margin-top: 30px;
             margin-bottom: 20px;
             font-weight: bold;
-            border-bottom: 2px solid #003366;
             padding-bottom: 15px;
             text-align: center;
+        }
+        @media (max-width: 768px) {
+            .service-title {
+                font-size: 1.8em;
+            }
         }
         .subsection-title {
             font-size: 1.3em;
@@ -463,6 +467,61 @@
             max-height: 500px;
             opacity: 1;
         }
+
+        /* Styles for screens smaller than 600px */
+        @media screen and (max-width: 600px) {
+            .header {
+                padding: 10px 0;
+            }
+            .logo img {
+                max-width: 200px;
+            }
+            .navigation {
+                flex-direction: column;
+            }
+            .nav-button {
+                margin: 5px;
+                font-size: 0.9em;
+                padding: 10px 15px;
+            }
+            .tagline {
+                font-size: 0.9em;
+            }
+            .summary{
+                font-size: 0.85em;
+            }
+            .quadrant-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto;
+                padding: 10px;
+            }
+            .quadrant {
+                padding: 15px;
+            }
+            .service-title {
+                font-size: 1.8em;
+            }
+            .subsection-title {
+                font-size: 1.1em;
+            }
+            .service-description {
+                font-size: 0.95em;
+            }
+            .service-list {
+                font-size: 0.95em;
+                padding-left: 20px;
+            }
+            .contact-button {
+                font-size: 1em;
+                padding: 15px 30px;
+            }
+            footer {
+                font-size: 0.8em;
+            }
+            .employer-section p{
+                font-size: 0.9em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -598,8 +657,7 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             const stickyHeader = document.querySelector('.sticky-header');
-            const floatingButton = document.querySelector('.floating-contact-button');
-            const scrollY = window.scrollY;
+            const floatingButton = document.querySelector('.floating-contact-button');const scrollY = window.scrollY;
 
             if (scrollY > header.offsetHeight) {
                 stickyHeader.classList.add('show');
