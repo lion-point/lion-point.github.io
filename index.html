@@ -345,7 +345,12 @@
             font-size: 1.2em;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             z-index: 1000;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            transition: opacity 0.3s ease, transform 0.2s ease;
+            opacity: 0;
+        }
+
+        .floating-contact-button.show {
+            opacity: 1;
         }
 
         .floating-contact-button:hover {
@@ -379,15 +384,16 @@
             background-color: #f9f9f9;
             z-index: 1000;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 10px 20px; /* Adjust padding */
+            padding: 10px 20px;
             display: flex;
-            justify-content: space-between; /* Space out logo and menu icon */
+            justify-content: space-between;
             align-items: center;
         }
 
         .sticky-logo {
             max-width: 100px;
             height: auto;
+            margin-left: 20px;
         }
 
         .menu-icon {
@@ -397,6 +403,7 @@
             width: 30px;
             height: 20px;
             cursor: pointer;
+            margin-right: 30px;
         }
 
         .menu-icon .line {
@@ -408,39 +415,42 @@
 
         .sticky-nav {
             position: absolute;
-            top: 100%; /* Position below the header */
-            left: 0;
-            width: 100%;
+            top: 100%;
+            right: 0; /* Change left to right */
+            width: auto; /* Adjust width to content */
             background-color: #f9f9f9;
-            display: none; /* Initially hidden */
+            display: none;
             flex-direction: column;
-            align-items: center;
-            padding: 15px 0;
+            align-items: flex-start; /* Align items to the start (left) */
+            padding: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px; /* Add rounded corners */
+            border: 1px solid #eee; /* Add a border */
         }
 
         .sticky-nav.open {
-            display: flex; /* Show when the 'open' class is added */
+            display: flex;
         }
 
         .sticky-nav-button {
-            background-color: transparent; /* Make buttons transparent */
+            background-color: transparent;
             color: #003366;
             padding: 10px 20px;
-            margin: 5px 0; /* Adjust vertical margin */
+            margin: 5px 0;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
             font-size: 1em;
             transition: background-color 0.3s ease;
-            text-align: center;
-            width: 100%; /* Make buttons full width in the dropdown */
-            box-sizing: border-box; /* Include padding in width */
+            text-align: left; /* Align text to the left */
+            width: auto; /* Adjust width to content */
+            box-sizing: border-box;
+            white-space: nowrap; /* Prevent text wrapping */
         }
 
         .sticky-nav-button:hover {
-            background-color: #e0e0e0; /* Light background on hover */
+            background-color: #e0e0e0;
         }
     </style>
 </head>
@@ -589,12 +599,15 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             const stickyHeader = document.querySelector('.sticky-header');
+            const floatingButton = document.querySelector('.floating-contact-button');
             const scrollY = window.scrollY;
 
             if (scrollY > header.offsetHeight) {
                 stickyHeader.classList.add('show');
+                floatingButton.classList.add('show');
             } else {
                 stickyHeader.classList.remove('show');
+                floatingButton.classList.remove('show');
             }
         });
 
