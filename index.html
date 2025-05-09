@@ -138,8 +138,7 @@
             padding-top: 15px;
         }
         .qualification-button {
-            background-color: #003366;
-            color: #fff;
+            color: #003366;
             padding: 10px 20px;
             margin: 5px 10px;
             border: none;
@@ -147,18 +146,15 @@
             cursor: pointer;
             text-decoration: none;
             font-size: 1em;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition:  color 0.3s ease, transform 0.2s ease;
             text-align: center;
         }
         .qualification-button:hover {
-            background-color: #002952;
+            color: #002952;
             transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
         .qualification-button:active {
             transform: translateY(0);
-            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
         .contact-form {
@@ -339,18 +335,13 @@
             right: 20px;
             background-color: #003366;
             color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
+            padding: 7.5px 12.5px; /* Half the original padding */
+            border-radius: 5px; /* Half the original border-radius */
             cursor: pointer;
-            font-size: 1.2em;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-size: 0.8em; /* Reduced font size */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Adjusted shadow */
             z-index: 1000;
-            transition: opacity 0.3s ease, transform 0.2s ease;
-            opacity: 0;
-        }
-
-        .floating-contact-button.show {
-            opacity: 1;
+            transition:  transform 0.2s ease;
         }
 
         .floating-contact-button:hover {
@@ -370,8 +361,8 @@
              .floating-contact-button {
                 bottom: 10px;
                 right: 10px;
-                padding: 12px 20px;
-                font-size: 1em;
+                padding: 6px 10px;
+                font-size: 0.8em;
             }
         }
 
@@ -388,6 +379,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sticky-header.show {
+            opacity: 1;
         }
 
         .sticky-logo {
@@ -416,16 +413,16 @@
         .sticky-nav {
             position: absolute;
             top: 100%;
-            right: 0; /* Change left to right */
-            width: auto; /* Adjust width to content */
+            right: 0;
+            width: auto;
             background-color: #f9f9f9;
             display: none;
             flex-direction: column;
-            align-items: flex-start; /* Align items to the start (left) */
+            align-items: flex-start;
             padding: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px; /* Add rounded corners */
-            border: 1px solid #eee; /* Add a border */
+            border-radius: 8px;
+            border: 1px solid #eee;
         }
 
         .sticky-nav.open {
@@ -443,10 +440,10 @@
             text-decoration: none;
             font-size: 1em;
             transition: background-color 0.3s ease;
-            text-align: left; /* Align text to the left */
-            width: auto; /* Adjust width to content */
+            text-align: left;
+            width: auto;
             box-sizing: border-box;
-            white-space: nowrap; /* Prevent text wrapping */
+            white-space: nowrap;
         }
 
         .sticky-nav-button:hover {
@@ -466,7 +463,7 @@
             <a href="#coaching-support" class="nav-button">Coaching & Support</a>
             <a href="#job-search-assistance" class="nav-button">Job Search Assistance</a>
             <a href="#short-term-support" class="nav-button">Short Term Support</a>
-            <a href="#service-qualifications" class="nav-button qualification-button">Service Qualifications</a>
+            <a href="#service-qualifications" class="nav-button ">Service Qualifications</a>
             <a href="#for-employers" class="nav-button">Employers</a>
         </nav>
     </header>
@@ -604,10 +601,8 @@
 
             if (scrollY > header.offsetHeight) {
                 stickyHeader.classList.add('show');
-                floatingButton.classList.add('show');
             } else {
                 stickyHeader.classList.remove('show');
-                floatingButton.classList.remove('show');
             }
         });
 
