@@ -293,14 +293,14 @@
             }
         }
 
-        /* New Styles for Quadrant Layout */
+        /* --- Flexbox Solution for Dynamic Quadrants --- */
         .quadrant-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto;
+            display: flex;
+            flex-wrap: wrap;
             gap: 20px;
             padding: 20px;
             margin-bottom: 40px;
+            justify-content: space-around;
         }
         .quadrant {
             padding: 20px;
@@ -308,28 +308,57 @@
             background-color: #f9f9f9;
             text-align: center;
             border: 1px solid #eee;
+            flex-basis: calc(50% - 10px);
+            box-sizing: border-box;
         }
-        #preparation-training {
-            grid-column: 1;
-            grid-row: 1;
+        @media (max-width: 768px) {
+            .quadrant-container {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto;
+            }
+            .quadrant {
+                flex-basis: 100%;
+                grid-column: 1;
+                grid-row: auto;
+            }
         }
-        #coaching-support {
-            grid-column: 2;
-            grid-row: 1;
+
+        /* --- CSS Grid Solution for Dynamic Quadrants --- */
+        /* .quadrant-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        margin-bottom: 40px;
         }
-        #job-search-assistance {
-            grid-column: 1;
-            grid-row: 2;
+        .quadrant {
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        text-align: center;
+        border: 1px solid #eee;
         }
-        #short-term-support {
-            grid-column: 2;
-            grid-row: 2;
+        @media (max-width: 600px) {
+        .quadrant-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 10px;
         }
-        .main-content{
-            padding-bottom: 0;
+        .quadrant {
+        padding: 15px;
         }
-        .services-section{
-            margin-bottom: 0;
+        } */
+
+        @media (max-width: 600px) {
+            .quadrant-container {
+                padding: 10px;
+                gap: 10px;
+            }
+            .quadrant {
+                padding: 15px;
+                flex-basis: 100%;
+            }
         }
 
         /* Floating Contact Button Styles */
@@ -339,11 +368,11 @@
             right: 20px;
             background-color: #003366;
             color: white;
-            padding: 7.5px 12.5px; /* Half the original padding */
-            border-radius: 5px; /* Half the original border-radius */
+            padding: 7.5px 12.5px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 0.8em; /* Reduced font size */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Adjusted shadow */
+            font-size: 0.8em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             transition:  transform 0.2s ease;
         }
@@ -354,15 +383,7 @@
         }
 
         @media (max-width: 768px) {
-            .quadrant-container {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto auto;
-            }
-            .quadrant {
-                grid-column: 1;
-                grid-row: auto;
-            }
-             .floating-contact-button {
+            .floating-contact-button {
                 bottom: 10px;
                 right: 10px;
                 padding: 6px 10px;
@@ -381,11 +402,11 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 10px 20px;
             display: flex;
-            justify-content: center; /* Center the content horizontally */
+            justify-content: center;
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
-            text-align: center; /* Add this line to center the logo */
+            text-align: center;
         }
 
         .sticky-header.show {
@@ -395,11 +416,11 @@
         .sticky-logo {
             max-width: 100px;
             height: auto;
-            margin: 0 auto; /* Center the logo horizontally */
+            margin: 0 auto;
         }
 
         .menu-icon {
-            display: none; /* Make sure the menu icon is not displayed */
+            display: none;
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
@@ -470,7 +491,7 @@
 
         /* Styles for screens smaller than 600px */
         @media screen and (max-width: 600px) {
-            .header {
+            header {
                 padding: 10px 0;
             }
             .logo img {
@@ -651,9 +672,9 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    const offset = targetElement.offsetTop - 60; // Adjusted offset
+                    const offset = targetElement.offsetTop - 100; // Adjusted offset
                     window.scrollTo({
-top: offset,
+                        top: offset,
                         behavior: 'smooth'
                     });
                 }
@@ -676,7 +697,7 @@ top: offset,
         const menuIcon = document.getElementById('menu-icon');
         const stickyNav = document.getElementById('sticky-nav');
 
-        if (menuIcon && stickyNav) {  // Check if elements exist
+        if (menuIcon && stickyNav) {
             menuIcon.addEventListener('mouseenter', () => {
                 stickyNav.classList.add('open');
             });
@@ -694,19 +715,17 @@ top: offset,
             });
         }
 
-        // Update copyright year dynamically
         document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
-        // Scroll to top on floating button click
         document.getElementById('back-to-top-button').addEventListener('click', () => {
             const contactSection = document.getElementById('contact-section');
-             if (contactSection) {
+            if (contactSection) {
                 const offset = contactSection.offsetTop;
                 window.scrollTo({
                     top: offset,
                     behavior: 'smooth'
                 });
-             }
+            }
         });
 
     </script>
