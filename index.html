@@ -26,7 +26,6 @@
         .logo img {
             max-width: 250px;
             height: auto;
-            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);  Removed box shadow */
             border-radius: 10px;
         }
         .tagline {
@@ -44,13 +43,13 @@
         .nav-button {
             background-color: #003366;
             color: #fff;
-            padding: 12px 25px;
-            margin: 10px 15px;
+            padding: 10px 20px; /* Slightly reduced padding */
+            margin: 5px 10px; /* Reduced margin */
             border: none;
             border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
-            font-size: 1.1em;
+            font-size: 1em; /* Reduced font-size slightly */
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
@@ -140,13 +139,13 @@
         .qualification-button {
             background-color: #003366;
             color: #fff;
-            padding: 12px 25px;
-            margin: 10px 15px;
+            padding: 10px 20px; /* Slightly reduced padding */
+            margin: 5px 10px; /* Reduced margin */
             border: none;
             border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
-            font-size: 1.1em;
+            font-size: 1em; /* Reduced font-size slightly */
             transition: background-color 0.3s ease, transform 0.2s ease;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             text-align: center;
@@ -292,6 +291,56 @@
                 text-align: left;
             }
         }
+
+        /* New Styles for Quadrant Layout */
+        .quadrant-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns */
+            grid-template-rows: auto auto;    /* Two rows, auto height */
+            gap: 20px;                  /* Space between quadrants */
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+        .quadrant {
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        #preparation-training {
+            grid-column: 1;
+            grid-row: 1;
+        }
+        #coaching-support {
+            grid-column: 2;
+            grid-row: 1;
+        }
+        #job-search-assistance {
+            grid-column: 1;
+            grid-row: 2;
+        }
+        #short-term-support {
+            grid-column: 2;
+            grid-row: 2;
+        }
+        .main-content{
+            padding-bottom: 0;
+        }
+        .services-section{
+            margin-bottom: 0;
+        }
+        @media (max-width: 768px) {
+            .quadrant-container {
+                grid-template-columns: 1fr; /* Stack on small screens */
+                grid-template-rows: auto auto auto auto;
+            }
+            .quadrant {
+                grid-column: 1;
+                grid-row: auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -314,67 +363,68 @@
 
     <main id="main-content" class="services-section">
         <h2 id="services">Services</h2>
+        <div class="quadrant-container">
+            <section id="preparation-training" class="quadrant service">
+                <h3 class="service-title">Preparation & Training</h3>
+                <p>For individuals preparing for employment</p>
+                <h4 class="subsection-title">Job Readiness Training & Interview Skills</h4>
+                <p class="service-description">We provide interview skills training, including practice with common questions, and guidance on professional attire and conduct.  Our training emphasizes:</p>
+                <ul class="service-list">
+                    <li>Professional appearance and hygiene</li>
+                    <li>Effective body language</li>
+                    <li>Creating positive first impressions</li>
+                    <li>Exploring diverse career paths</li>
+                </ul>
+                <p class="service-description">Our training builds job application confidence.</p>
+                <img src="training.jpg" alt="A group of people participating in a training session, learning job readiness skills.">
+            </section>
 
-        <section id="preparation-training" class="service">
-            <h3 class="service-title">Preparation & Training</h3>
-            <p>For individuals preparing for employment</p>
-            <h4 class="subsection-title">Job Readiness Training & Interview Skills</h4>
-            <p class="service-description">We provide interview skills training, including practice with common questions, and guidance on professional attire and conduct.  Our training emphasizes:</p>
-            <ul class="service-list">
-                <li>Professional appearance and hygiene</li>
-                <li>Effective body language</li>
-                <li>Creating positive first impressions</li>
-                <li>Exploring diverse career paths</li>
-            </ul>
-            <p class="service-description">Our training builds job application confidence.</p>
-            <img src="training.jpg" alt="A group of people participating in a training session, learning job readiness skills.">
-        </section>
+            <section id="coaching-support" class="quadrant service">
+                <h3 class="service-title">Coaching & Support</h3>
+                <p>For current employees</p>
+                <h4 class="subsection-title">Supported Employment Job Coaching</h4>
+                <p class="service-description">We offer post-employment support to ensure success.  Our Employment Specialists provide ongoing assistance to help individuals:</p>
+                <ul class="service-list">
+                    <li>Fulfill job responsibilities</li>
+                    <li>Acquire new skills</li>
+                    <li>Enhance workplace communication</li>
+                    <li>Maintain positive employer relations</li>
+                </ul>
+                <p class="service-description">Our coaching promotes job success.</p>
+                <img src="coaching.jpg" alt="A job coach working with an individual at their workplace, providing support and guidance.">
+            </section>
 
-        <section id="coaching-support" class="service">
-            <h3 class="service-title">Coaching & Support</h3>
-            <p>For current employees</p>
-            <h4 class="subsection-title">Supported Employment Job Coaching</h4>
-            <p class="service-description">We offer post-employment support to ensure success.  Our Employment Specialists provide ongoing assistance to help individuals:</p>
-            <ul class="service-list">
-                <li>Fulfill job responsibilities</li>
-                <li>Acquire new skills</li>
-                <li>Enhance workplace communication</li>
-                <li>Maintain positive employer relations</li>
-            </ul>
-            <p class="service-description">Our coaching promotes job success.</p>
-            <img src="coaching.jpg" alt="A job coach working with an individual at their workplace, providing support and guidance.">
-        </section>
+            <section id="job-search-assistance" class="quadrant service">
+                <h3 class="service-title">Job Search Assistance</h3>
+                <p>For individuals seeking suitable employment</p>
+                <p class="service-description">We assist in finding appropriate jobs, work environment, and colleagues.  Our Employment Specialists offer support with:</p>
+                <ul class="service-list">
+                    <li>Scheduling interviews</li>
+                    <li>Communicating with employers</li>
+                    <li>Resolving transportation issues</li>
+                    <li>Providing interview guidance</li>
+                     <li>Identifying necessary job duties and schedules</li>
+                    <li>Requesting workplace accommodations</li>
+                </ul>
+                <p class="service-description">We guide individuals through the job search to find fulfilling employment.</p>
+                <img src="jobsearch.jpg" alt="An Employment Specialist helping an individual search for job openings on a computer.">
+            </section>
 
-        <section id="job-search-assistance" class="service">
-            <h3 class="service-title">Job Search Assistance</h3>
-            <p>For individuals seeking suitable employment</p>
-            <p class="service-description">We assist in finding appropriate jobs, work environment, and colleagues.  Our Employment Specialists offer support with:</p>
-            <ul class="service-list">
-                <li>Scheduling interviews</li>
-                <li>Communicating with employers</li>
-                <li>Resolving transportation issues</li>
-                <li>Providing interview guidance</li>
-                 <li>Identifying necessary job duties and schedules</li>
-                <li>Requesting workplace accommodations</li>
-            </ul>
-            <p class="service-description">We guide individuals through the job search to find fulfilling employment.</p>
-            <img src="jobsearch.jpg" alt="An Employment Specialist helping an individual search for job openings on a computer.">
-        </section>
-
-        <section id="short-term-support" class="service">
-            <h3 class="service-title">Short Term Support</h3>
-            <p>For new employees</p>
-            <p class="service-description">We provide short-term assistance for individuals starting new jobs, including help with:</p>
-            <ul class="service-list">
-                <li>Navigating the hiring process</li>
-                <li>Adjusting to job tasks and the work environment</li>
-                <li>Communicating effectively</li>
-                <li>Developing natural workplace supports</li>
-                <li>Requesting accommodations</li>
-            </ul>
-            <p class="service-description">This service offers brief support during the initial employment period.</p>
-            <img src="support.jpg" alt="A new employee receiving support and guidance from a Lionpoint Solutions staff member in a workplace setting.">
-        </section>
+            <section id="short-term-support" class="quadrant service">
+                <h3 class="service-title">Short Term Support</h3>
+                <p>For new employees</p>
+                <p class="service-description">We provide short-term assistance for individuals starting new jobs, including help with:</p>
+                <ul class="service-list">
+                    <li>Navigating the hiring process</li>
+                    <li>Adjusting to job tasks and the work environment</li>
+                    <li>Communicating effectively</li>
+                    <li>Developing natural workplace supports</li>
+                    <li>Requesting accommodations</li>
+                </ul>
+                <p class="service-description">This service offers brief support during the initial employment period.</p>
+                <img src="support.jpg" alt="A new employee receiving support and guidance from a Lionpoint Solutions staff member in a workplace setting.">
+            </section>
+        </div>
 
         <section id="service-qualifications">
             <h3 class="service-title">Service Qualifications</h3>
