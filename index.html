@@ -377,10 +377,11 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Center the content horizontally */
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
+            text-align: center; /* Add this line to center the logo */
         }
 
         .sticky-header.show {
@@ -390,11 +391,11 @@
         .sticky-logo {
             max-width: 100px;
             height: auto;
-            margin-left: 20px;
+            margin-left: 0; /* Remove left margin */
         }
 
         .menu-icon {
-            display: flex;
+            display: none; /* Make sure the menu icon is not displayed */
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
@@ -483,19 +484,6 @@
 
     <div class="sticky-header">
         <img src="TransparentLogo.png" alt="Lionpoint Solutions Logo" class="sticky-logo">
-        <div class="menu-icon" id="menu-icon">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-        <nav class="sticky-nav" id="sticky-nav">
-            <a href="#preparation-training" class="sticky-nav-button">Preparation & Training</a>
-            <a href="#coaching-support" class="sticky-nav-button">Coaching & Support</a>
-            <a href="#job-search-assistance" class="sticky-nav-button">Job Search Assistance</a>
-            <a href="#short-term-support" class="sticky-nav-button">Short Term Support</a>
-            <a href="#service-qualifications" class="sticky-nav-button qualification-button">Service Qualifications</a>
-            <a href="#for-employers" class="sticky-nav-button">Employers</a>
-        </nav>
     </div>
 
     <main id="main-content" class="services-section">
