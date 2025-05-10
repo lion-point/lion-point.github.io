@@ -361,8 +361,8 @@
             }
         }
 
-        /* Floating Contact Button Styles */
-        .floating-contact-button {
+        /* Floating Back to Top Button Styles */
+        .back-to-top-button {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -375,15 +375,16 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             z-index: 1000;
             transition:  transform 0.2s ease;
+            display: none; /* Hidden by default */
         }
 
-        .floating-contact-button:hover {
+        .back-to-top-button:hover {
             background-color: #002952;
             transform: scale(1.1);
         }
 
         @media (max-width: 768px) {
-            .floating-contact-button {
+            .back-to-top-button {
                 bottom: 10px;
                 right: 10px;
                 padding: 6px 10px;
@@ -539,7 +540,7 @@
             footer {
                 font-size: 0.8em;
             }
-            .employer-section p{
+             .employer-section p{
                 font-size: 0.9em;
             }
         }
@@ -560,6 +561,7 @@
             <a href="#short-term-support" class="nav-button">Short Term Support</a>
             <a href="#service-qualifications" class="nav-button ">Service Qualifications</a>
             <a href="#for-employers" class="nav-button">Employers</a>
+            <a href="#contact-section" class="nav-button">Contact Us</a>
         </nav>
     </header>
 
@@ -663,7 +665,9 @@
         <p>&copy; <span id="copyright-year">2025</span> Lionpoint Solutions. All rights reserved.</p>
     </footer>
 
-    <a href="#contact-section" class="floating-contact-button" id="back-to-top-button">Contact Us</a>
+    <button id="back-to-top-button" class="back-to-top-button">
+        ↑ Back to Top
+    </button>
 
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -684,13 +688,15 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
             const stickyHeader = document.querySelector('.sticky-header');
-            const floatingButton = document.querySelector('.floating-contact-button');
+            const backToTopButton = document.getElementById('back-to-top-button');
             const scrollY = window.scrollY;
 
             if (scrollY > header.offsetHeight) {
                 stickyHeader.classList.add('show');
+                backToTopButton.style.display = 'block'; // Show the button
             } else {
                 stickyHeader.classList.remove('show');
+                backToTopButton.style.display = 'none';    // Hide the button
             }
         });
 
@@ -718,14 +724,10 @@
         document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
         document.getElementById('back-to-top-button').addEventListener('click', () => {
-            const contactSection = document.getElementById('contact-section');
-            if (contactSection) {
-                const offset = contactSection.offsetTop;
-                window.scrollTo({
-                    top: offset,
-                    behavior: 'smooth'
-                });
-            }
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
 
     </script>
