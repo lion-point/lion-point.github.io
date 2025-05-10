@@ -308,23 +308,23 @@
             background-color: #f9f9f9;
             text-align: center;
             border: 1px solid #eee;
-            flex-basis: calc(50% - 10px);
+            flex-basis: calc(50% - 10px); /* Two columns with gap */
             box-sizing: border-box;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 768px) { /* Single column on smaller screens */
             .quadrant-container {
-                display: grid;
+                display: grid; /* Switched to grid for simpler single column layout */
                 grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto auto;
+                grid-template-rows: auto auto auto auto; /* Ensure rows stack correctly */
             }
             .quadrant {
-                flex-basis: 100%;
-                grid-column: 1;
-                grid-row: auto;
+                flex-basis: 100%; /* Full width for single column */
+                grid-column: 1; /* Ensure it takes the full grid column */
+                grid-row: auto; /* Stack them in order */
             }
         }
 
-        /* --- CSS Grid Solution for Dynamic Quadrants --- */
+        /* --- CSS Grid Solution for Dynamic Quadrants (Alternative, commented out) --- */
         /* .quadrant-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -350,14 +350,14 @@
         }
         } */
 
-        @media (max-width: 600px) {
+        @media (max-width: 600px) { /* Further adjustments for very small screens */
             .quadrant-container {
                 padding: 10px;
                 gap: 10px;
             }
             .quadrant {
                 padding: 15px;
-                flex-basis: 100%;
+                flex-basis: 100%; /* Ensure full width on very small screens too */
             }
         }
 
@@ -398,36 +398,37 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #f9f9f9;
-            z-index: 1000;
+            background-color: #f9f9f9; /* Ensure background is solid */
+            z-index: 1000; /* Keep it above other content */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            padding: 10px 20px;
+            padding: 10px 20px; /* Add padding */
             display: flex;
-            justify-content: space-between; /* Changed to space-between */
+            justify-content: space-between; /* Space between logo and menu icon */
             align-items: center;
-            opacity: 0;
+            opacity: 0; /* Start hidden */
             transition: opacity 0.3s ease;
-            text-align: center; /* Added for logo centering */
+            text-align: center; /* For logo centering if needed */
+            box-sizing: border-box; /* Include padding and border in element's total width and height */
         }
 
         .sticky-header.show {
-            opacity: 1;
+            opacity: 1; /* Show when scrolled */
         }
 
         .sticky-logo {
-            max-width: 100px;
+            max-width: 100px; /* Adjust size as needed */
             height: auto;
-            margin: 0 auto; /* Keep logo centered */
+            margin: 0 auto; /* Center logo if menu icon is on the other side */
         }
 
         .menu-icon {
-            display: flex;
+            display: flex; /* Use flex to make it visible */
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
             height: 20px;
             cursor: pointer;
-            margin-right: 0; /* Removed fixed margin, will adjust for mobile */
+            margin-right: 0; /* Adjust as needed, or remove if space-between works */
         }
 
         .menu-icon .line {
@@ -437,59 +438,74 @@
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
+        /* Transform menu icon to "X" when nav is open */
+        .menu-icon.open .line:nth-child(1) {
+            transform: translateY(8.5px) rotate(45deg);
+        }
+        .menu-icon.open .line:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-icon.open .line:nth-child(3) {
+            transform: translateY(-8.5px) rotate(-45deg);
+        }
+
+
         .sticky-nav {
-            position: fixed; /* Changed to fixed */
-            top: 60px; /* Position below the sticky header */
-            right: 10px; /* Adjusted for right edge */
+            position: fixed; /* Fixed position */
+            top: 60px; /* Position below the sticky header (adjust if header height changes) */
+            right: 10px; /* Align to the right */
             background-color: #f9f9f9;
-            display: none;
+            display: none; /* Start hidden, controlled by JS */
             flex-direction: column;
-            align-items: flex-start;
+            align-items: flex-start; /* Align items to the start (left) */
             padding: 15px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             border: 1px solid #eee;
             transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            width: auto; /* Adjust width as needed */
-            z-index: 1001; /* Ensure it's above other elements */
+            max-height: 0; /* Collapsed by default */
+            overflow: hidden; /* Hide content when collapsed */
+            opacity: 0; /* Hidden by default */
+            width: auto; /* Adjust width as needed, or set a specific width */
+            z-index: 1001; /* Ensure it's above other elements like sticky-header */
         }
 
         .sticky-nav.open {
-            display: flex;
-            max-height: 500px;
-            opacity: 1;
+            display: flex; /* Show when open class is added */
+            max-height: 500px; /* Allow it to expand (adjust as needed) */
+            opacity: 1; /* Make it visible */
         }
 
         .sticky-nav-button {
             background-color: transparent;
             color: #003366;
             padding: 10px 20px;
-            margin: 5px 0;
+            margin: 5px 0; /* Vertical margin */
             border: none;
             border-radius: 8px;
             cursor: pointer;
             text-decoration: none;
             font-size: 1em;
             transition: background-color 0.3s ease;
-            text-align: left;
-            width: auto; /* Ensure buttons don't stretch full width */
-            box-sizing: border-box; /* Include padding in width */
+            text-align: left; /* Align text to the left */
+            width: auto; /* Let content determine width, or set a fixed one */
+            box-sizing: border-box;
             white-space: nowrap; /* Prevent text wrapping */
         }
 
         .sticky-nav-button:hover {
-            background-color: #e0e0e0;
+            background-color: #e0e0e0; /* Light hover effect */
         }
 
+        /* Remove hover-based opening for sticky-nav, JS will handle click */
+        /*
         .menu-icon:hover + .sticky-nav,
         .sticky-nav:hover {
             display: flex;
             max-height: 500px;
             opacity: 1;
         }
+        */
 
         /* Styles for screens smaller than 600px */
         @media screen and (max-width: 600px) {
@@ -500,10 +516,10 @@
                 max-width: 200px;
             }
             .navigation {
-                flex-direction: column;
+                flex-direction: column; /* Stack nav buttons vertically */
             }
             .nav-button {
-                margin: 5px;
+                margin: 5px; /* Adjust margin for stacked buttons */
                 font-size: 0.9em;
                 padding: 10px 15px;
             }
@@ -514,59 +530,59 @@
                 font-size: 0.85em;
             }
             .quadrant-container {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto auto;
-                padding: 10px;
+                grid-template-columns: 1fr; /* Ensure single column for quadrants */
+                grid-template-rows: auto auto auto auto; /* Stack quadrants */
+                padding: 10px; /* Reduce padding */
             }
             .quadrant {
-                padding: 15px;
+                padding: 15px; /* Reduce padding inside quadrants */
             }
             .service-title {
-                font-size: 1.8em;
+                font-size: 1.8em; /* Adjust title font size */
             }
             .subsection-title {
-                font-size: 1.1em;
+                font-size: 1.1em; /* Adjust subsection title font size */
             }
             .service-description {
-                font-size: 0.95em;
+                font-size: 0.95em; /* Adjust description font size */
             }
             .service-list {
-                font-size: 0.95em;
-                padding-left: 20px;
+                font-size: 0.95em; /* Adjust list font size */
+                padding-left: 20px; /* Adjust list padding */
             }
             .contact-button {
-                font-size: 1em;
-                padding: 15px 30px;
+                font-size: 1em; /* Adjust contact button font size */
+                padding: 15px 30px; /* Adjust contact button padding */
             }
             footer {
-                font-size: 0.8em;
+                font-size: 0.8em; /* Adjust footer font size */
             }
             .employer-section p{
-                font-size: 0.9em;
+                font-size: 0.9em; /* Adjust employer section text */
             }
 
             .sticky-header {
-                padding: 10px;
+                padding: 10px; /* Adjust padding for smaller sticky header */
                 justify-content: space-between; /* Ensure logo and menu are spaced */
             }
             .sticky-logo {
-                max-width: 80px; /* Adjust logo size on mobile */
+                max-width: 80px; /* Smaller logo on mobile */
             }
             .menu-icon {
-                margin-right: 10px; /* Add right margin to menu icon on mobile */
-                display: flex; /* Ensure menu icon is visible on mobile */
+                margin-right: 10px; /* Add some space to the right of the menu icon */
+                display: flex; /* Ensure menu icon is visible */
             }
             .navigation {
-                display: none; /* Keep original nav hidden on mobile */
+                display: none; /* Keep original (non-sticky) nav hidden */
             }
             .sticky-nav {
-                top: 50px; /* Adjust top position for mobile sticky header */
-                right: 10px;
-                width: auto;
+                top: 50px; /* Adjust top position if sticky header height changes on mobile */
+                right: 10px; /* Keep it aligned to the right */
+                width: auto; /* Or set a specific width like 150px / 200px */
             }
-            .sticky-nav.open {
+            .sticky-nav.open { /* Ensure it displays correctly when open on mobile */
                 display: flex;
-                position: fixed;
+                position: fixed; /* Reinforce fixed positioning if needed */
             }
         }
     </style>
@@ -575,7 +591,7 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
         <div class="logo">
-            <a href="#"><img src="TransparentLogo.png" alt="Lionpoint Solutions Logo"></a>
+            <a href="#"><img src="TransparentLogo.png" alt="Lionpoint Solutions Logo" onerror="this.onerror=null;this.src='https://placehold.co/250x100/003366/FFFFFF?text=Lionpoint+Logo';"></a>
         </div>
         <p class="tagline">Connecting ability with opportunity</p>
         <p class="summary">Empowering individuals with disabilities to achieve fulfilling careers through training, coaching, and ongoing support.</p>
@@ -591,8 +607,8 @@
     </header>
 
     <div class="sticky-header">
-        <a href="#"><img src="TransparentLogo.png" alt="Lionpoint Solutions Logo" class="sticky-logo"></a>
-        <div id="menu-icon" class="menu-icon">
+        <a href="#"><img src="TransparentLogo.png" alt="Lionpoint Solutions Logo" class="sticky-logo" onerror="this.onerror=null;this.src='https://placehold.co/100x40/003366/FFFFFF?text=Logo';"></a>
+        <div id="menu-icon" class="menu-icon" aria-label="Toggle Navigation Menu" tabindex="0" role="button" aria-expanded="false" aria-controls="sticky-nav">
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
@@ -611,8 +627,8 @@
     <main id="main-content" class="services-section">
         <h2 id="services">Services</h2>
         <div class="quadrant-container">
-            <section id="preparation-training" class="quadrant service">
-                <h3 class="service-title">Preparation & Training</h3>
+            <section id="preparation-training" class="quadrant service" aria-labelledby="preparation-training-title">
+                <h3 id="preparation-training-title" class="service-title">Preparation & Training</h3>
                 <p>For individuals preparing for employment</p>
                 <h4 class="subsection-title">Job Readiness Training & Interview Skills</h4>
                 <p class="service-description">We provide interview skills training, including practice with common questions, and guidance on professional attire and conduct.  Our training emphasizes:</p>
@@ -625,8 +641,8 @@
                 <p class="service-description">Our training builds job application confidence.</p>
             </section>
 
-            <section id="coaching-support" class="quadrant service">
-                <h3 class="service-title">Coaching & Support</h3>
+            <section id="coaching-support" class="quadrant service" aria-labelledby="coaching-support-title">
+                <h3 id="coaching-support-title" class="service-title">Coaching & Support</h3>
                 <p>For current employees</p>
                 <h4 class="subsection-title">Supported Employment Job Coaching</h4>
                 <p class="service-description">We offer post-employment support to ensure success.  Our Employment Specialists provide ongoing assistance to help individuals:</p>
@@ -639,8 +655,8 @@
                 <p class="service-description">Our coaching promotes job success.</p>
             </section>
 
-            <section id="job-search-assistance" class="quadrant service">
-                <h3 class="service-title">Job Search Assistance</h3>
+            <section id="job-search-assistance" class="quadrant service" aria-labelledby="job-search-assistance-title">
+                <h3 id="job-search-assistance-title" class="service-title">Job Search Assistance</h3>
                 <p>For individuals seeking suitable employment</p>
                 <p class="service-description">We assist in finding appropriate jobs, work environment, and colleagues.  Our Employment Specialists offer support with:</p>
                 <ul class="service-list">
@@ -654,8 +670,8 @@
                 <p class="service-description">We guide individuals through the job search to find fulfilling employment.</p>
             </section>
 
-            <section id="short-term-support" class="quadrant service">
-                <h3 class="service-title">Short Term Support</h3>
+            <section id="short-term-support" class="quadrant service" aria-labelledby="short-term-support-title">
+                <h3 id="short-term-support-title" class="service-title">Short Term Support</h3>
                 <p>For new employees</p>
                 <p class="service-description">We provide short-term assistance for individuals starting new jobs, including help with:</p>
                 <ul class="service-list">
@@ -669,8 +685,8 @@
             </section>
         </div>
 
-        <section id="service-qualifications">
-            <h3 class="service-title">Service Qualifications</h3>
+        <section id="service-qualifications" aria-labelledby="service-qualifications-title">
+            <h3 id="service-qualifications-title" class="service-title">Service Qualifications</h3>
             <p>Program/services admission criteria:</p>
             <ul class="service-list">
                 <li>IDVR vocational services eligibility</li>
@@ -681,16 +697,16 @@
                 <li>Functional/behavioral abilities to obtain/maintain employment</li>
             </ul>
         </section>
-        <section id="for-employers" class="employer-section">
-            <h3 class="service-title">Information for Local Businesses</h3>
+        <section id="for-employers" class="employer-section" aria-labelledby="for-employers-title">
+            <h3 id="for-employers-title" class="service-title">Information for Local Businesses</h3>
             <p>Partnering with Lionpoint Solutions offers numerous advantages for employers. By hiring individuals with disabilities, businesses can enhance their profitability and cost-effectiveness. These employees often demonstrate higher retention rates, lower absenteeism, and increased work accuracy.</p>
             <p>Hiring individuals with disabilities also promotes diversity and inclusion, boosts company morale, and may qualify employers for the Work Opportunity Tax Credit. Lionpoint Solutions assists in training and provides ongoing support, ensuring a smooth integration of these employees into the workforce.</p>
             <p>Ultimately, this collaboration fosters a more inclusive and supportive community.</p>
         </section>
     </main>
 
-    <section id="contact-section">
-        <h2>Contact Us</h2>
+    <section id="contact-section" aria-labelledby="contact-us-title">
+        <h2 id="contact-us-title">Contact Us</h2>
         <p>Contact us to learn more or schedule a consultation with our Employment Specialists. We look forward to assisting you!</p>
         <p>Phone: <a href="tel:208-996-0663">208-996-0663</a></p>
         <p>Email: <a href="mailto:lionpointsolutions@gmail.com">lionpointsolutions@gmail.com</a></p>
@@ -704,63 +720,142 @@
         <p>&copy; <span id="copyright-year">2025</span> Lionpoint Solutions. All rights reserved.</p>
     </footer>
 
-    <button id="back-to-top-button" class="back-to-top-button">
-        ↑ Back to Top
+    <button id="back-to-top-button" class="back-to-top-button" aria-label="Back to Top">
+        &uarr; Back to Top
     </button>
 
     <script>
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    const offset = targetElement.offsetTop - 100; // Adjusted offset
+                    // Calculate offset for sticky header if it's visible
+                    const stickyHeader = document.querySelector('.sticky-header');
+                    let headerOffset = 0;
+                    if (stickyHeader && stickyHeader.classList.contains('show')) {
+                         // Get the actual height of the sticky header
+                        headerOffset = stickyHeader.offsetHeight > 0 ? stickyHeader.offsetHeight : 60; // Fallback height
+                    } else if (targetId === "#main-content" || targetId === "#services") {
+                        // If scrolling to the very top sections, use a smaller or no offset
+                        // as the main header might be the reference.
+                        const mainHeader = document.querySelector('header');
+                        headerOffset = mainHeader.offsetHeight > 0 ? mainHeader.offsetHeight : 100; // A bit more space for main header
+                    }
+
+
+                    // Adjust the final scroll position
+                    // For sections like "main-content", we might want to scroll a bit higher
+                    // to ensure the section title is clearly visible below the sticky header.
+                    let topPosition = targetElement.offsetTop - headerOffset;
+                    if (targetId !== "#main-content" && targetId !== "#services") {
+                        topPosition -= 20; // Add a small additional margin for other sections
+                    }
+
+
                     window.scrollTo({
-                        top: offset,
+                        top: topPosition,
                         behavior: 'smooth'
                     });
                 }
             });
         });
 
+        // Show/hide sticky header and back-to-top button on scroll
         window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
+            const header = document.querySelector('header'); // The main header
             const stickyHeader = document.querySelector('.sticky-header');
             const backToTopButton = document.getElementById('back-to-top-button');
             const scrollY = window.scrollY;
 
-            if (scrollY > header.offsetHeight) {
-                stickyHeader.classList.add('show');
-                backToTopButton.style.display = 'block'; // Show the button
-            } else {
-                stickyHeader.classList.remove('show');
-                backToTopButton.style.display = 'none';    // Hide the button
+            // Check if elements exist before accessing properties
+            if (header && stickyHeader && backToTopButton) {
+                if (scrollY > header.offsetHeight) {
+                    stickyHeader.classList.add('show');
+                    backToTopButton.style.display = 'block';
+                } else {
+                    stickyHeader.classList.remove('show');
+                    stickyNav.classList.remove('open'); // Also close nav if scrolling to top
+                    menuIcon.classList.remove('open'); // Reset menu icon
+                    menuIcon.setAttribute('aria-expanded', 'false');
+                    backToTopButton.style.display = 'none';
+                }
             }
         });
 
+        // Toggle sticky navigation on menu icon click
         const menuIcon = document.getElementById('menu-icon');
         const stickyNav = document.getElementById('sticky-nav');
 
         if (menuIcon && stickyNav) {
-            menuIcon.addEventListener('click', () => { // Changed to click
-                stickyNav.classList.toggle('open');
+            menuIcon.addEventListener('click', () => {
+                const isOpen = stickyNav.classList.toggle('open');
+                menuIcon.classList.toggle('open'); // For X icon animation
+                menuIcon.setAttribute('aria-expanded', isOpen.toString());
+            });
+             // Keyboard accessibility for menu icon
+            menuIcon.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault(); // Prevent page scroll on space
+                    const isOpen = stickyNav.classList.toggle('open');
+                    menuIcon.classList.toggle('open');
+                    menuIcon.setAttribute('aria-expanded', isOpen.toString());
+                }
             });
 
-            // Removed mouseenter and mouseleave events
+
+            // Get all navigation links within the sticky navigation
+            const stickyNavLinks = stickyNav.querySelectorAll('.sticky-nav-button');
+
+            // Add click event listener to each navigation link
+            stickyNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    stickyNav.classList.remove('open'); // Hide the navigation pane
+                    menuIcon.classList.remove('open'); // Reset menu icon to burger
+                    menuIcon.setAttribute('aria-expanded', 'false');
+                    // The smooth scroll for the link itself is handled by the general anchor link script
+                });
+            });
         }
 
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+        // Set current year in footer
+        const copyrightYearElement = document.getElementById('copyright-year');
+        if (copyrightYearElement) {
+            copyrightYearElement.textContent = new Date().getFullYear();
+        }
 
-        document.getElementById('back-to-top-button').addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+
+        // Back to top button functionality
+        const backToTopButton = document.getElementById('back-to-top-button');
+        if (backToTopButton) {
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
-        });
+        }
+
+        // Fallback for Font Awesome if the kit fails or is not provided
+        if (typeof FontAwesomeKitConfig === 'undefined') {
+            const icons = {
+                'fa-facebook-square': '📘', // Example: Facebook emoji
+                'fa-linkedin': '🔗'       // Example: LinkedIn emoji (or a chain link)
+            };
+            document.querySelectorAll('.fab').forEach(iconElement => {
+                for (const cls in icons) {
+                    if (iconElement.classList.contains(cls)) {
+                        iconElement.textContent = icons[cls];
+                        iconElement.style.fontFamily = 'sans-serif'; // Ensure emoji displays
+                        iconElement.style.fontSize = '1.2em'; // Adjust size if needed
+                    }
+                }
+            });
+        }
 
     </script>
-
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>
