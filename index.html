@@ -36,7 +36,7 @@
             font-size: 1.1em;
         }
         .navigation {
-            display: flex;
+            display: none; /* Hide the original navigation */
             justify-content: center;
             margin-bottom: 20px;
             flex-wrap: wrap;
@@ -403,11 +403,11 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             padding: 10px 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between; /* Changed to space-between */
             align-items: center;
             opacity: 0;
             transition: opacity 0.3s ease;
-            text-align: center;
+            text-align: center; /* Added for logo centering */
         }
 
         .sticky-header.show {
@@ -417,17 +417,17 @@
         .sticky-logo {
             max-width: 100px;
             height: auto;
-            margin: 0 auto;
+            margin: 0 auto; /* Keep logo centered */
         }
 
         .menu-icon {
-            display: none;
+            display: flex;
             flex-direction: column;
             justify-content: space-between;
             width: 30px;
             height: 20px;
             cursor: pointer;
-            margin-right: 30px;
+            margin-right: 0; /* Removed fixed margin, will adjust for mobile */
         }
 
         .menu-icon .line {
@@ -438,10 +438,9 @@
         }
 
         .sticky-nav {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            width: auto;
+            position: fixed; /* Changed to fixed */
+            top: 60px; /* Position below the sticky header */
+            right: 10px; /* Adjusted for right edge */
             background-color: #f9f9f9;
             display: none;
             flex-direction: column;
@@ -454,6 +453,8 @@
             max-height: 0;
             overflow: hidden;
             opacity: 0;
+            width: auto; /* Adjust width as needed */
+            z-index: 1001; /* Ensure it's above other elements */
         }
 
         .sticky-nav.open {
@@ -474,9 +475,9 @@
             font-size: 1em;
             transition: background-color 0.3s ease;
             text-align: left;
-            width: auto;
-            box-sizing: border-box;
-            white-space: nowrap;
+            width: auto; /* Ensure buttons don't stretch full width */
+            box-sizing: border-box; /* Include padding in width */
+            white-space: nowrap; /* Prevent text wrapping */
         }
 
         .sticky-nav-button:hover {
@@ -540,8 +541,32 @@
             footer {
                 font-size: 0.8em;
             }
-             .employer-section p{
+            .employer-section p{
                 font-size: 0.9em;
+            }
+
+            .sticky-header {
+                padding: 10px;
+                justify-content: space-between; /* Ensure logo and menu are spaced */
+            }
+            .sticky-logo {
+                max-width: 80px; /* Adjust logo size on mobile */
+            }
+            .menu-icon {
+                margin-right: 10px; /* Add right margin to menu icon on mobile */
+                display: flex; /* Ensure menu icon is visible on mobile */
+            }
+            .navigation {
+                display: none; /* Keep original nav hidden on mobile */
+            }
+            .sticky-nav {
+                top: 50px; /* Adjust top position for mobile sticky header */
+                right: 10px;
+                width: auto;
+            }
+            .sticky-nav.open {
+                display: flex;
+                position: fixed;
             }
         }
     </style>
@@ -567,6 +592,20 @@
 
     <div class="sticky-header">
         <a href="#"><img src="TransparentLogo.png" alt="Lionpoint Solutions Logo" class="sticky-logo"></a>
+        <div id="menu-icon" class="menu-icon">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <nav id="sticky-nav" class="sticky-nav">
+            <a href="#preparation-training" class="sticky-nav-button">Preparation & Training</a>
+            <a href="#coaching-support" class="sticky-nav-button">Coaching & Support</a>
+            <a href="#job-search-assistance" class="sticky-nav-button">Job Search Assistance</a>
+            <a href="#short-term-support" class="sticky-nav-button">Short Term Support</a>
+            <a href="#service-qualifications" class="sticky-nav-button">Service Qualifications</a>
+            <a href="#for-employers" class="sticky-nav-button">Employers</a>
+            <a href="#contact-section" class="sticky-nav-button">Contact Us</a>
+        </nav>
     </div>
 
     <main id="main-content" class="services-section">
@@ -704,21 +743,11 @@
         const stickyNav = document.getElementById('sticky-nav');
 
         if (menuIcon && stickyNav) {
-            menuIcon.addEventListener('mouseenter', () => {
-                stickyNav.classList.add('open');
+            menuIcon.addEventListener('click', () => { // Changed to click
+                stickyNav.classList.toggle('open');
             });
 
-            menuIcon.addEventListener('mouseleave', () => {
-                stickyNav.classList.remove('open');
-            });
-
-            stickyNav.addEventListener('mouseenter', () => {
-                stickyNav.classList.add('open');
-            });
-
-            stickyNav.addEventListener('mouseleave', () => {
-                stickyNav.classList.remove('open');
-            });
+            // Removed mouseenter and mouseleave events
         }
 
         document.getElementById('copyright-year').textContent = new Date().getFullYear();
