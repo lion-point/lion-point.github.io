@@ -838,12 +838,12 @@
             });
         }
 
-    //    // Fallback for Font Awesome if the kit fails or is not provided
-      //  if (typeof FontAwesomeKitConfig === 'undefined') {
-          //  const icons = {
-             //   'fa-facebook-square': '📘', // Example: Facebook emoji
+      // Fallback for Font Awesome if the kit fails or is not provided
+       if (typeof FontAwesomeKitConfig === 'undefined') {
+            const icons = {
+               'fa-facebook-square': '📘', // Example: Facebook emoji
                // 'fa-linkedin': '🔗'       // Example: LinkedIn emoji (or a chain link)
-           // };
+        };
             document.querySelectorAll('.fab').forEach(iconElement => {
                 for (const cls in icons) {
                     if (iconElement.classList.contains(cls)) {
