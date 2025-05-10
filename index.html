@@ -28,6 +28,7 @@
             max-width: 250px;
             height: auto;
             border-radius: 10px;
+            border: none; /* Ensure no default border on logo */
         }
         .tagline {
             font-style: italic;
@@ -233,9 +234,9 @@
             justify-content: center;
         }
 
-        body {
+        /* body {  This selector was duplicated, merged styles into the first body declaration.
             color: #333;
-        }
+        } */
         a {
             color: #003366;
             text-decoration: none;
@@ -250,7 +251,7 @@
         }
         .skip-link {
             position: absolute;
-            top: -40px;
+            top: -60px; /* MODIFIED: Increased negative offset to ensure it's hidden */
             left: 0;
             background-color: #003366;
             color: white;
@@ -276,6 +277,7 @@
             height: auto;
             border-radius: 8px;
             margin-top: 20px;
+            border: none; /* ADDED: Ensure all images have no border by default */
         }
         @media (max-width: 768px) {
             .navigation {
@@ -419,6 +421,7 @@
             max-width: 100px; /* Adjust size as needed */
             height: auto;
             margin: 0 auto; /* Center logo if menu icon is on the other side */
+            border: none; /* Ensure no default border on sticky logo */
         }
 
         .menu-icon {
@@ -572,9 +575,9 @@
                 margin-right: 10px; /* Add some space to the right of the menu icon */
                 display: flex; /* Ensure menu icon is visible */
             }
-            .navigation {
-                display: none; /* Keep original (non-sticky) nav hidden */
-            }
+            /* .navigation { Non-sticky nav should remain hidden as per original logic
+                display: none; 
+            } */
             .sticky-nav {
                 top: 50px; /* Adjust top position if sticky header height changes on mobile */
                 right: 10px; /* Keep it aligned to the right */
@@ -711,9 +714,7 @@
         <p>Phone: <a href="tel:208-996-0663">208-996-0663</a></p>
         <p>Email: <a href="mailto:lionpointsolutions@gmail.com">lionpointsolutions@gmail.com</a></p>
         <div class="social-media">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        </div>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-square">F</i></a> <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin">L</i></a> </div>
     </section>
 
     <footer>
@@ -736,23 +737,23 @@
                     const stickyHeader = document.querySelector('.sticky-header');
                     let headerOffset = 0;
                     if (stickyHeader && stickyHeader.classList.contains('show')) {
-                         // Get the actual height of the sticky header
+                        // Get the actual height of the sticky header
                         headerOffset = stickyHeader.offsetHeight > 0 ? stickyHeader.offsetHeight : 60; // Fallback height
                     } else if (targetId === "#main-content" || targetId === "#services") {
                         // If scrolling to the very top sections, use a smaller or no offset
                         // as the main header might be the reference.
-                        const mainHeader = document.querySelector('header');
-                        headerOffset = mainHeader.offsetHeight > 0 ? mainHeader.offsetHeight : 100; // A bit more space for main header
+                        // const mainHeader = document.querySelector('header');
+                        // headerOffset = mainHeader.offsetHeight > 0 ? mainHeader.offsetHeight : 100; // A bit more space for main header
+                        // For simplicity, when sticky header is not shown, minimal or no offset.
+                        headerOffset = 0;
                     }
 
 
                     // Adjust the final scroll position
-                    // For sections like "main-content", we might want to scroll a bit higher
-                    // to ensure the section title is clearly visible below the sticky header.
                     let topPosition = targetElement.offsetTop - headerOffset;
-                    if (targetId !== "#main-content" && targetId !== "#services") {
-                        topPosition -= 20; // Add a small additional margin for other sections
-                    }
+                     if (targetId !== "#main-content" && targetId !== "#services" && stickyHeader && stickyHeader.classList.contains('show')) {
+                         topPosition -= 20; // Add a small additional margin for other sections when sticky header is active
+                     }
 
 
                     window.scrollTo({
@@ -769,9 +770,12 @@
             const stickyHeader = document.querySelector('.sticky-header');
             const backToTopButton = document.getElementById('back-to-top-button');
             const scrollY = window.scrollY;
+            const menuIcon = document.getElementById('menu-icon'); // Define menuIcon here
+            const stickyNav = document.getElementById('sticky-nav'); // Define stickyNav here
+
 
             // Check if elements exist before accessing properties
-            if (header && stickyHeader && backToTopButton) {
+            if (header && stickyHeader && backToTopButton && menuIcon && stickyNav) { // Ensure menuIcon and stickyNav are checked
                 if (scrollY > header.offsetHeight) {
                     stickyHeader.classList.add('show');
                     backToTopButton.style.display = 'block';
@@ -805,57 +809,31 @@
                 }
             });
 
-
-            // Get all navigation links within the sticky navigation
-            const stickyNavLinks = stickyNav.querySelectorAll('.sticky-nav-button');
-
-            // Add click event listener to each navigation link
-            stickyNavLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    stickyNav.classList.remove('open'); // Hide the navigation pane
-                    menuIcon.classList.remove('open'); // Reset menu icon to burger
+            // Close sticky nav when a nav link is clicked
+            const stickyNavButtons = stickyNav.querySelectorAll('.sticky-nav-button');
+            stickyNavButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    stickyNav.classList.remove('open');
+                    menuIcon.classList.remove('open');
                     menuIcon.setAttribute('aria-expanded', 'false');
-                    // The smooth scroll for the link itself is handled by the general anchor link script
                 });
             });
         }
-
-        // Set current year in footer
-        const copyrightYearElement = document.getElementById('copyright-year');
-        if (copyrightYearElement) {
-            copyrightYearElement.textContent = new Date().getFullYear();
-        }
-
 
         // Back to top button functionality
         const backToTopButton = document.getElementById('back-to-top-button');
         if (backToTopButton) {
             backToTopButton.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
 
-      // Fallback for Font Awesome if the kit fails or is not provided
-       if (typeof FontAwesomeKitConfig === 'undefined') {
-            const icons = {
-               'fa-facebook-square': '📘', // Example: Facebook emoji
-               // 'fa-linkedin': '🔗'       // Example: LinkedIn emoji (or a chain link)
-        };
-            document.querySelectorAll('.fab').forEach(iconElement => {
-                for (const cls in icons) {
-                    if (iconElement.classList.contains(cls)) {
-                        iconElement.textContent = icons[cls];
-                        iconElement.style.fontFamily = 'sans-serif'; // Ensure emoji displays
-                        iconElement.style.fontSize = '1.2em'; // Adjust size if needed
-                    }
-                }
-            });
+        // Set current year in footer
+        const copyrightYear = document.getElementById('copyright-year');
+        if(copyrightYear) {
+            copyrightYear.textContent = new Date().getFullYear();
         }
 
     </script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</body>
+    </body>
 </html>
