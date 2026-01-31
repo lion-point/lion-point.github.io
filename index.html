@@ -21,35 +21,37 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            /* Center vertically and horizontally */
+            justify-content: center;
             align-items: center;
+            text-align: center;
         }
 
         header {
-            text-align: center;
-            margin-bottom: 40px;
             width: 100%;
             max-width: 1200px;
+            /* Remove margin-bottom to keep it perfectly centered vertically if no other content */
+            margin: 0 auto;
         }
 
         .logo {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             display: flex;
             justify-content: center;
-            min-height: 60px;
             align-items: center;
             width: 100%;
         }
 
         .logo img {
-            max-width: 100%;
-            width: 250px;
+            max-width: 90%;
+            width: 320px; /* Slightly larger for central focus */
             height: auto;
         }
 
         /* Style for the text fallback if image is missing */
         .logo-fallback {
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: #1a365d;
             letter-spacing: -0.025em;
             text-transform: uppercase;
@@ -58,19 +60,32 @@
         .tagline {
             font-style: italic;
             color: #666;
-            margin-bottom: 30px;
-            font-size: 1.1em;
+            margin-bottom: 25px;
+            font-size: 1.2em;
             padding: 0 10px;
         }
         
         /* Contact links optimization for mobile/web */
+        .contact-container {
+            margin-top: 15px;
+            font-size: 1em;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
         .contact-link {
             color: #0066cc;
             text-decoration: none;
             font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
         }
 
         .contact-link:hover {
+            background-color: #f0f7ff;
             text-decoration: underline;
         }
 
@@ -80,15 +95,23 @@
         }
 
         /* Responsive adjustments */
+        @media (min-width: 600px) {
+            .contact-container {
+                flex-direction: row;
+                justify-content: center;
+                gap: 20px;
+            }
+        }
+
         @media (max-width: 600px) {
             body {
                 padding: 15px;
             }
             .logo img {
-                width: 200px;
+                width: 240px;
             }
             .tagline {
-                font-size: 1em;
+                font-size: 1.1em;
             }
         }
     </style>
@@ -104,14 +127,13 @@
                  alt="Lionpoint Solutions Logo" 
                  onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'logo-fallback\'>LIONPOINT SOLUTIONS</div>';">
         </div>
+        
         <p class="tagline">Connecting ability with opportunity</p>
         
         <!-- Contact quick links for mobile/web -->
-        <div style="margin-top: 10px; font-size: 0.9em;">
-            <p>
-                Call: <a href="tel:2089960663" class="contact-link">208-996-0663</a> | 
-                Email: <a href="mailto:lionpointsolutions@gmail.com" class="contact-link">lionpointsolutions@gmail.com</a>
-            </p>
+        <div class="contact-container">
+            <a href="tel:2089960663" class="contact-link">📞 208-996-0663</a>
+            <a href="mailto:lionpointsolutions@gmail.com" class="contact-link">✉️ lionpointsolutions@gmail.com</a>
         </div>
 
         <!-- Commented out contents below -->
