@@ -21,10 +21,19 @@
             margin-bottom: 20px;
             display: flex;
             justify-content: center;
+            min-height: 60px; /* Space for the logo */
+            align-items: center;
         }
         .logo img {
-            max-width: 200px;
+            max-width: 250px; /* Adjusted for TransparentLogo.png */
             height: auto;
+        }
+        /* Style for the text fallback if image is missing */
+        .logo-fallback {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #1a365d;
+            letter-spacing: -0.025em;
         }
         .tagline {
             font-style: italic;
@@ -42,8 +51,13 @@
 <body>
     <header>
         <div class="logo">
-            <!-- Ensure Final-01.jpg is in your repository root -->
-            <img src="Final-01.jpg" alt="Lionpoint Solutions Logo">
+            <!-- 
+                 Updated source to TransparentLogo.png based on repository files.
+                 The 'onerror' attribute handles cases where the file might be missing.
+            -->
+            <img src="TransparentLogo.png" 
+                 alt="Lionpoint Solutions Logo" 
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'logo-fallback\'>LIONPOINT SOLUTIONS</div>';">
         </div>
         <p class="tagline">Connecting ability with opportunity</p>
         
